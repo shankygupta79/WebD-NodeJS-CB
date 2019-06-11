@@ -1,0 +1,19 @@
+*{
+   font-size: 40px;
+}
+body{
+    color: purple;
+}
+
+ul ul{
+    display: none;
+}
+
+li:hover >ul{
+    display: block;
+    color: red;
+}
+
+li:hover>ul ul{
+    color: blue;
+}
