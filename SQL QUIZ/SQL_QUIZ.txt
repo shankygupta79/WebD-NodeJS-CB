@@ -1,0 +1,130 @@
+WEBINAR 13 SQL QUIZ=
+
+ANS 1
+
+CREATE TABLE manufacturers
+(ID Numeric (3) Primary Key,
+Name varchar(20) not null,
+Country varchar(20) not null,
+ESTD Numeric(4));
+
+
+
+ANS 2
+
+INSERT INTO manufacturers VALUES (1,"Volkswagen","Germany",1930);
+INSERT INTO manufacturers VALUES (2,"Suzuki","Japan",1970);
+INSERT INTO manufacturers VALUES (3,"Renault","France",1960);
+INSERT INTO manufacturers VALUES (4,"Mahindra","India",1990);
+INSERT INTO manufacturers VALUES (5,"Tata","India",1980);
+
+
+
+ANS 3
+
+CREATE TABLE factories
+(ID Numeric (3) Primary Key,
+City varchar(20) not null,
+State varchar(20) not null,
+MANUF_ID Numeric(3) not null,
+Capacity Numeric(10));
+
+
+
+ANS 4
+
+INSERT INTO factories VALUES (1,"Chennai","Tamil Nadu",4,100000);
+INSERT INTO factories VALUES (2,"Gurgaon","Haryana",2,50000);
+INSERT INTO factories VALUES (3,"Suarat","Gujarat",5,70000);
+
+
+
+ANS 5
+
+SELECT State,Capacity
+FROM factories;
+
+
+
+ANS 6
+
+SELECT City
+FROM factories
+WHERE Capacity=(SELECT MAX(Capacity) FROM factories);
+
+
+
+ANS 7
+
+CREATE TABLE Car_Models
+(ID Numeric (3) Primary Key,
+Name varchar(20) not null,
+MANUF_ID Numeric(3) not null,
+FACT_ID Numeric(3) not null,
+Year Numeric (4),
+Total_Made Numeric(10));
+
+
+
+ANS 8
+
+INSERT INTO Car_Models VALUES (1,"Alto",2,6,2010,40000);
+INSERT INTO Car_Models VALUES (2,"Alto",2,5,2010,50000);
+INSERT INTO Car_Models VALUES (3,"City",7,8,2011,70000);
+
+
+
+ANS 9
+
+SELECT Year,Name,MAX(Total_Made) as Total_Made
+FROM Car_Models 
+GROUP BY Year;
+
+
+
+ANS 10
+
+SELECT manufacturers.name,City,(Total_Made/Capacity)*100 as Utilization
+FROM manufacturers,factories,Car_Models
+WHERE manufacturers.id=Car_Models.Manuf_id AND factories.id=Car_Models.Fact_ID;
+
+
+
+ANS 11
+
+SELECT Name,SUM(Total_Made) as Total_Sale
+FROM Car_Models
+GROUP BY Name
+LIMIT 1;
+
+
+
+ANS 12
+
+SELECT name,count(*)
+FROM Car_Models
+GROUP BY Name
+LIMIT 1;
+
+
+
+ANS 13
+
+DELETE
+FROM Car_Models
+WHERE YEAR<2010;
+
+
+
+ANS 14
+
+UPDATE Car_Models c,MAnufacturers m
+SET c.Name=CONCAT(m.name,' ',c.name)
+WHERE c.manuf_id=m.id;
+
+
+
+ 
+
+
+
