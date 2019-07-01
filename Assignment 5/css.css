@@ -1,0 +1,15 @@
+body{
+	background-image:linear-gradient(white,black,white);
+}
+#x{
+    color:lightcoral
+}
+.card{
+    border-radius: 50px;
+}
+img{
+    width:350px;
+    height:250px;
+    align-self: center;
+    border-radius: 25% ;
+}
