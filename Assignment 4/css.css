@@ -1,0 +1,14 @@
+body{
+	background-image:linear-gradient(white,lightsteelblue,white);
+}
+#x{
+	color: blue;
+}
+#card{
+	border-color: grey;
+	line-height: 2.0;padding: 35px;
+	font-size: 20px;border-radius:50px
+}
+#red{
+	color: red;
+}
